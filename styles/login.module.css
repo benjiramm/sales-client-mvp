@@ -1,0 +1,65 @@
+.main_card {
+    background-color: var(--main-gray);
+    border-radius: 15px;
+    box-shadow:  2px 3px 2px #aaa;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    width: 40%;
+    margin: auto;
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.75em;
+}
+
+.input_section {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    margin-bottom: 1em;
+}
+
+.text_box {
+    background-color: var(--lighter-gray);
+    font-size: 1.25em;
+    border-style: none;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 2px #aaa;
+    font-family: 'Secular One', sans-serif;
+}
+
+.button {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.75em;
+    margin: 15px;
+    padding: .3em .5em;
+    align-self: center;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: var(--black);
+    border-width: 1px;
+
+    /* fill in animation */
+    background: linear-gradient(to left, transparent 50%, var(--green) 50% )right;
+    background-size: 200%;
+    transition: .3s ease-out;
+
+    
+    filter: drop-shadow(2px 3px 2px #aaa);
+
+}
+
+.button:hover {
+    background-position: left;
+}
+
+.error_banner {
+    background-color: var(--navbar-color);
+    color: white;
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.25em;
+    padding: .5em;
+    text-align: start;
+    width: 42.5%;
+    margin: auto;
+    border-radius: 10px;
+}

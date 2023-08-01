@@ -1,0 +1,42 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em;
+    padding: .5em 1em;
+    gap: 2em;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    background-color: var(--main-gray);
+    box-shadow: 2px 3px 2px #aaa;
+}
+
+.row_item {
+    text-align: right;
+    border-radius: 10px;
+    flex-basis: 15%;
+    font-size: 1.2em;
+    font-family: 'Secular One', sans-serif;
+}
+
+.row_points {
+    text-align: left;
+}
+
+.sales_box {
+    display: flex;
+    gap: .5em;
+    padding: .5em;
+    flex-grow: 4;
+    background-color: var(--lighter-gray);
+    box-shadow :inset 2px 2px 2px #aaa;
+}
+
+.sale_item {
+    padding: .5em;
+    border-radius: 8px;
+    background-color: #eee;
+    box-shadow:  1px 1px 1px #aaa;
+    font-size: .8em;
+}
