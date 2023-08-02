@@ -14,7 +14,7 @@
     margin: .5em;
     font-size: 2em;
 }
-
+ 
 .time_section {
     font-family: 'Heebo', sans-serif;
     display: flex;
@@ -30,8 +30,21 @@
     text-align: center;
     line-height: 1em;
     vertical-align: middle;
+    transition: .5s;
 }
 
 .time_icon:hover {
     background-color: #ddd;
+}
+
+[data-selected='evening'] 
+.time_icon.evening {
+    background-color: navy;
+    color: antiquewhite;
+}
+
+[data-selected='morning']
+.time_icon.morning {
+    background-color: aquamarine;
+    color: yellow;
 }

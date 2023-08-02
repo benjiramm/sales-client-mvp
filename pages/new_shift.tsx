@@ -21,6 +21,7 @@ const NewShift = () => {
         ? "ערב"
         : "בוקר"
       : "") +
+    " " +
     new Date(shiftDate).toLocaleDateString("he-IS", {
       day: "numeric",
       month: "long",
@@ -55,16 +56,31 @@ const NewShift = () => {
               setShiftDate(dayjs(e.target.value).format("YYYY-MM-DD"))
             }
           />
-          <div className={styles.time_picker}>
+          <div
+            className={styles.time_picker}
+            data-selected={
+              shiftType != null
+                ? shiftType == ShiftType.morning
+                  ? "morning"
+                  : "evening"
+                : ""
+            }
+          >
             <div className={styles.time_section}>
-              <div className={styles.time_icon}>
+              <div
+                className={`${styles.time_icon} ${styles.morning}`}
+                onClick={() => setShiftType(ShiftType.morning)}
+              >
                 <FontAwesomeIcon icon="sun" />
               </div>
 
               <div>בוקר</div>
             </div>
             <div className={styles.time_section}>
-              <div className={styles.time_icon}>
+              <div
+                className={`${styles.time_icon} ${styles.evening}`}
+                onClick={() => setShiftType(ShiftType.evening)}
+              >
                 <FontAwesomeIcon icon="moon" />
               </div>
               <div>ערב</div>
