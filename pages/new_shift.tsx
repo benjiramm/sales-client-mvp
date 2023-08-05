@@ -5,6 +5,7 @@ import { useState } from "react";
 import styles from "../styles/new_shift.module.css";
 import dayjs, { Dayjs } from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AddStaffForShift from "@/components/new_shift/AddStaffForShift";
 
 const NewShift = () => {
   const [shiftDate, setShiftDate] = useState(dayjs().format("YYYY-MM-DD"));
@@ -56,6 +57,8 @@ const NewShift = () => {
               setShiftDate(dayjs(e.target.value).format("YYYY-MM-DD"))
             }
           />
+
+          {/** time section */}
           <div
             className={styles.time_picker}
             data-selected={
@@ -86,6 +89,9 @@ const NewShift = () => {
               <div>ערב</div>
             </div>
           </div>
+
+          {/** add staff to new shift */}
+          <AddStaffForShift />
         </div>
       </div>
     </>
