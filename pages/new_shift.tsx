@@ -6,6 +6,8 @@ import styles from "../styles/new_shift.module.css";
 import dayjs, { Dayjs } from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AddStaffForShift from "@/components/new_shift/AddStaffForShift";
+import useGetItems from "@/hooks/useGetItems";
+import useGetStaff from "@/hooks/useGetStaff";
 
 const NewShift = () => {
   const [shiftDate, setShiftDate] = useState(dayjs().format("YYYY-MM-DD"));
@@ -29,19 +31,17 @@ const NewShift = () => {
     });
 
   //fetching the items
-  const itemsQuery = useQuery({
-    queryKey: ["items"],
-    queryFn: () => {
-      return axios.get("http://localhost:3000/items");
-    },
-  });
-  // fetching the staff
-  const staffQuery = useQuery({
-    queryKey: ["staff"],
-    queryFn: () => {
-      return axios.get("http://localhost:3000/staff");
-    },
-  });
+  const items = useGetItems()?.data;
+  //fetching the staff
+  const staff = useGetStaff()?.data;
+
+  if (!(staff || items)) {
+    return (
+      <>
+        <h1>loading</h1>
+      </>
+    ); //TODO - insert spinner to load
+  }
 
   return (
     <>
@@ -57,7 +57,6 @@ const NewShift = () => {
               setShiftDate(dayjs(e.target.value).format("YYYY-MM-DD"))
             }
           />
-
           {/** time section */}
           <div
             className={styles.time_picker}

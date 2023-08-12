@@ -111,6 +111,13 @@
     border-color: var(--black);
 }
 
+.staff_picker {
+    /* style of the staff picker*/
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.25em;
+    border-radius: 8px;
+}
+
 
 
 
