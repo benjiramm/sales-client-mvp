@@ -7,11 +7,15 @@ import { Staff } from "@/types/staff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Item } from "@/types/item";
 import AddItemForStaff from "./AddItemForStaff";
+import { useState } from "react";
 
 const NewStaffSales = (props: { staff: newStaffType }) => {
   const dispatch = useDispatch();
+
   const items = useGetItems()?.data as Array<Item>;
   const staff = useGetStaff()?.data as Array<Staff>;
+
+  const [collapsed, setCollapsed] = useState(false);
 
   const staffName = staff.map((s: Staff) => {
     if (s._id === props.staff.staff_id) {
@@ -25,22 +29,29 @@ const NewStaffSales = (props: { staff: newStaffType }) => {
   return (
     <>
       <div className={styles.staff_row}>
-        <div className={styles.staff_row_title}>{staffName}</div>
+        <div
+          className={styles.staff_row_title}
+          data-selected={collapsed ? "up" : "down"}
+        >
+          <div
+            className={styles.collapser}
+            onClick={() => setCollapsed(!collapsed)}
+          >
+            <FontAwesomeIcon icon="chevron-up" />
+          </div>
+          {staffName}
+        </div>
         {/* sales */}
         <div className={styles.add_sales_grid}>
           {items &&
             items.map((i) => (
-              <AddItemForStaff item={i} staff={props.staff} key={i._id} />
+              <AddItemForStaff
+                item={i}
+                staff={props.staff}
+                key={i._id}
+                collapsed={collapsed}
+              />
             ))}
-
-          <AddItemForStaff item={items[0]} staff={props.staff} />
-          <AddItemForStaff item={items[0]} staff={props.staff} />
-          <AddItemForStaff item={items[0]} staff={props.staff} />
-          <AddItemForStaff item={items[0]} staff={props.staff} />
-          <AddItemForStaff item={items[0]} staff={props.staff} />
-          <AddItemForStaff item={items[0]} staff={props.staff} />
-          <AddItemForStaff item={items[0]} staff={props.staff} />
-          <AddItemForStaff item={items[0]} staff={props.staff} />
         </div>
         {/* delete button */}
         <div className={styles.delete_button} onClick={() => handleDelete()}>

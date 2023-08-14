@@ -130,8 +130,20 @@
     flex-grow: 3;
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, 150px);
     gap: .5em;
+}
+
+[data-selected='down']
+.collapser {
+    transition: .5s;
+    transform: rotate(deg);
+}
+
+[data-selected='up']
+.collapser {
+    transition: .5s;
+    transform: rotate(180deg);
 }
 
 

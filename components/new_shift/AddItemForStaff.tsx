@@ -13,7 +13,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { ChangeEvent, useEffect, useState } from "react";
 
-const AddItemForStaff = (props: { staff: newStaffType; item: Item }) => {
+const AddItemForStaff = (props: {
+  staff: newStaffType;
+  item: Item;
+  collapsed: boolean;
+}) => {
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(0);
 
@@ -42,32 +46,36 @@ const AddItemForStaff = (props: { staff: newStaffType; item: Item }) => {
 
   return (
     <>
-      <div className={styles.main_container}>
-        <div className={styles.title}>
-          <FontAwesomeIcon icon={props.item.icon as any}></FontAwesomeIcon>
-          {" " + props.item.item_name}
-        </div>
-        <div className={styles.counter}>
-          <div
-            className={`${styles.counter_button} ${styles.substract}`}
-            onClick={() => handleSubstractSale()}
-          >
-            <FontAwesomeIcon icon="minus" />
+      {props.collapsed ? (
+        <p>{amount}</p>
+      ) : (
+        <div className={styles.main_container}>
+          <div className={styles.title}>
+            <FontAwesomeIcon icon={props.item.icon as any}></FontAwesomeIcon>
+            {" " + props.item.item_name}
           </div>
-          <input
-            type="numeric"
-            className={styles.input}
-            value={amount}
-            onChange={(e) => handleEditSale(e)}
-          />
-          <div
-            className={`${styles.counter_button} ${styles.add}`}
-            onClick={() => handleAddSale()}
-          >
-            <FontAwesomeIcon icon="plus" />
+          <div className={styles.counter}>
+            <div
+              className={`${styles.counter_button} ${styles.substract}`}
+              onClick={() => handleSubstractSale()}
+            >
+              <FontAwesomeIcon icon="minus" />
+            </div>
+            <input
+              type="numeric"
+              className={styles.input}
+              value={amount}
+              onChange={(e) => handleEditSale(e)}
+            />
+            <div
+              className={`${styles.counter_button} ${styles.add}`}
+              onClick={() => handleAddSale()}
+            >
+              <FontAwesomeIcon icon="plus" />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
