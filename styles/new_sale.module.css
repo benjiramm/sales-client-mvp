@@ -1,0 +1,57 @@
+.main_container {
+    background-color: var(--lighter-gray);
+    border-radius: 5px;
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.title {
+    font-family: 'Heebo',sans-serif;
+}
+
+.counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: .5em;
+}
+
+.input {
+    font-size: 1.25em;
+    width: 2em;
+    font-family: 'Secular One', sans-serif;
+    text-align: center;
+}
+
+.counter_button {
+    color: #fff;
+    border-radius: .3rem;
+    padding: .3em;
+    font-size: 1.25em;
+    box-shadow: 2px 2px 2px #aaa;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    
+    border-style: solid;
+    transition: .3s;
+}
+
+.add {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.substract {
+    background-color: var(--navbar-color);
+    border-color: var(--navbar-color);
+}
+
+.counter_button:hover {
+    background-color: white;
+    color: var(--black);
+    border-color: var(--black);
+}
+

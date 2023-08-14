@@ -52,13 +52,14 @@
 .new_staff_button {
     background-color: var(--green);
     margin: 0 .5rem;
-    padding: .3em;
+    padding: .25em .5em;
     border-radius: 8px;
     color: #fff;
     font-family: 'Heebo', sans-serif;
     font-size: 1.5em;
     align-self: flex-start;
     cursor: pointer;
+    box-shadow: 2px 2px 2px #aaa;
 }
 
 .add_staff_title {
@@ -84,13 +85,14 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: .5rem;
+    gap: 1em;
+    padding: 1rem;
     margin: 0 .5rem;
     border-radius: 10px;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.staff_row_item.delete_button {
+.delete_button {
     color: #fff;
     background-color: var(--navbar-color);
     border-radius: .3rem;
@@ -103,6 +105,12 @@
     border-color: var(--navbar-color);
     border-style: solid;
     transition: .3s;
+}
+
+.staff_row_title {
+    font-family: 'Secular One', sans-serif;
+    font-size: 1.5em;
+    
 }
 
 .delete_button:hover {
@@ -118,6 +126,13 @@
     border-radius: 8px;
 }
 
+.add_sales_grid {
+    flex-grow: 3;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: .5em;
+}
 
 
 

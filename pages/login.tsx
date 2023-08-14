@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Login = () => {
   const router = useRouter();
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +32,10 @@ const Login = () => {
       router.push("/");
     },
   });
+
+  if (user) {
+    router.push("/");
+  }
 
   const handleSubmit = () => {
     console.log(username, password);

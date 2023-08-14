@@ -4,16 +4,18 @@ import useGetStaff from "@/hooks/useGetStaff";
 import { ChangeEvent } from "react";
 import { Staff } from "@/types/staff";
 import { useDispatch } from "react-redux";
-import { addToSelected } from "@/slices/newShiftSlice";
+import { addStaff } from "@/slices/newShiftSlice";
+import useGetItems from "@/hooks/useGetItems";
 
 const NewEmptyStaff = (props: { deleteFunction: Function }) => {
   const dispatch = useDispatch();
 
   const staff = useGetStaff()?.data;
+  const items = useGetItems()?.data;
 
   const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     // handle select
-    dispatch(addToSelected(e.target.value));
+    dispatch(addStaff({ staff: e.target.value, items: items }));
     props.deleteFunction();
   };
   return (
@@ -26,11 +28,12 @@ const NewEmptyStaff = (props: { deleteFunction: Function }) => {
           <option disabled selected>
             -- בחר צוות --
           </option>
-          {staff.map((s: Staff) => (
-            <option key={s._id} value={s._id}>
-              {s.staff_name}
-            </option>
-          ))}
+          {staff &&
+            staff.map((s: Staff) => (
+              <option key={s._id} value={s._id}>
+                {s.staff_name}
+              </option>
+            ))}
         </select>
         {/** TODO - Filter out staff that's already selected */}
         <div

@@ -13,27 +13,28 @@ const AddStaffForShift = () => {
     (state: any) => state.new_shift.staff
   );
 
-  console.log(staff);
   return (
-    <div className={styles.staff_display}>
-      <div className={styles.add_staff_title}>צוות</div>
-      {/** staff from context */}
-      {staff.map((s) => (
-        <NewStaffSales /> // s is for staff, has the data inside
-      ))}
-      {/** empty new staff - depending on state */}
-      {newEmptyStaff ? (
-        <NewEmptyStaff deleteFunction={() => setNewEmptyStaff(false)} />
-      ) : (
-        <div
-          className={styles.new_staff_button}
-          onClick={() => setNewEmptyStaff(true)}
-        >
-          <FontAwesomeIcon icon="person-circle-plus" /> הוסף צוות
-        </div>
-      )}
-      {/** new staff button */}
-    </div>
+    <>
+      <div className={styles.staff_display}>
+        <div className={styles.add_staff_title}>צוות</div>
+        {/** staff from context */}
+        {staff.map((s) => (
+          <NewStaffSales staff={s} key={s.staff_id} />
+        ))}
+        {/** empty new staff - depending on state */}
+        {newEmptyStaff ? (
+          <NewEmptyStaff deleteFunction={() => setNewEmptyStaff(false)} />
+        ) : (
+          <div
+            className={styles.new_staff_button}
+            onClick={() => setNewEmptyStaff(true)}
+          >
+            <FontAwesomeIcon icon="person-circle-plus" /> הוסף צוות
+          </div>
+        )}
+        {/** new staff button */}
+      </div>
+    </>
   );
 };
 
