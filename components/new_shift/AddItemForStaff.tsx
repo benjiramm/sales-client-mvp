@@ -12,6 +12,8 @@ import {
 } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { ChangeEvent, useEffect, useState } from "react";
+import { TScoreboardLineSale } from "../scoreboard/Scoreboard";
+import SingleSaleBox from "../scoreboard/SingleSaleBox";
 
 const AddItemForStaff = (props: {
   staff: newStaffType;
@@ -26,12 +28,25 @@ const AddItemForStaff = (props: {
     item_id: props.item._id,
   };
 
+  const saleDisplayItem = {
+    item_name: props.item.item_name,
+    icon: props.item.icon,
+    item: props.item._id,
+    total_amount: amount,
+  } as TScoreboardLineSale;
+
   useEffect(() => {
     dispatch(editSaleOfStaff({ ...payloadAdress, amount }));
   }, [amount]);
 
   const handleEditSale = (e: ChangeEvent<HTMLInputElement>) => {
-    setAmount(parseInt(e.target.value));
+    console.log(e.target.value === "");
+    {
+      setAmount(0);
+    }
+    if (parseInt(e.target.value) >= 0) {
+      setAmount(parseInt(e.target.value));
+    }
   };
 
   const handleAddSale = () => {
@@ -47,7 +62,7 @@ const AddItemForStaff = (props: {
   return (
     <>
       {props.collapsed ? (
-        <p>{amount}</p>
+        amount > 0 && <SingleSaleBox sale={saleDisplayItem} />
       ) : (
         <div className={styles.main_container}>
           <div className={styles.title}>

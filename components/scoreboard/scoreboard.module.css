@@ -31,6 +31,7 @@
     flex-grow: 4;
     background-color: var(--lighter-gray);
     box-shadow :inset 2px 2px 2px #aaa;
+    border-radius: 10px;
 }
 
 .sale_item {
@@ -38,5 +39,6 @@
     border-radius: 8px;
     background-color: #eee;
     box-shadow:  1px 1px 1px #aaa;
-    font-size: .8em;
+    font-size: 1rem;
+    font-family: 'Secular One', sans-serif;
 }

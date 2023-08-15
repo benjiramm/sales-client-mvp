@@ -110,7 +110,7 @@
 .staff_row_title {
     font-family: 'Secular One', sans-serif;
     font-size: 1.5em;
-    
+    width: 8%;
 }
 
 .delete_button:hover {
@@ -134,17 +134,26 @@
     gap: .5em;
 }
 
-[data-selected='down']
 .collapser {
     transition: .5s;
-    transform: rotate(deg);
+    cursor: pointer;
+}
+
+[data-selected='down']
+.collapser {
+    transform: rotate(0deg);
 }
 
 [data-selected='up']
 .collapser {
-    transition: .5s;
     transform: rotate(180deg);
 }
+
+.collapsed_row_item{
+    
+    align-self: center;
+}
+
 
 
 
