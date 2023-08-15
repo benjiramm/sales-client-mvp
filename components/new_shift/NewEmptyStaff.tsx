@@ -1,14 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../styles/new_shift.module.css";
 import useGetStaff from "@/hooks/useGetStaff";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { Staff } from "@/types/staff";
-import { useDispatch } from "react-redux";
-import { addStaff } from "@/slices/newShiftSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addStaff, newStaffType } from "@/slices/newShiftSlice";
 import useGetItems from "@/hooks/useGetItems";
 
 const NewEmptyStaff = (props: { deleteFunction: Function }) => {
   const dispatch = useDispatch();
+  const selectedStaff = useSelector(
+    (store: any) => store.new_shift.staff
+  ) as Array<newStaffType>;
 
   const staff = useGetStaff()?.data;
   const items = useGetItems()?.data;
@@ -18,6 +21,30 @@ const NewEmptyStaff = (props: { deleteFunction: Function }) => {
     dispatch(addStaff({ staff: e.target.value, items: items }));
     props.deleteFunction();
   };
+
+  // filters out the selected staff from the dropdown menu
+  console.log(selectedStaff);
+  console.log(staff);
+
+  let staffToSelect = [] as Array<Staff>;
+
+  // TODO - clean up the filter code
+  if (staff) {
+    staff.map((s: Staff) => {
+      // if staff isnt selected, add it to staffToSelect
+      let selected = false;
+      selectedStaff.forEach((sel: newStaffType) => {
+        if (sel.staff_id === s._id) {
+          selected = true;
+        }
+      });
+
+      if (!selected) {
+        staffToSelect.push(s);
+      }
+    });
+  }
+
   return (
     <>
       <div className={styles.staff_row}>
@@ -29,7 +56,7 @@ const NewEmptyStaff = (props: { deleteFunction: Function }) => {
             -- בחר צוות --
           </option>
           {staff &&
-            staff.map((s: Staff) => (
+            staffToSelect.map((s: Staff) => (
               <option key={s._id} value={s._id}>
                 {s.staff_name}
               </option>
