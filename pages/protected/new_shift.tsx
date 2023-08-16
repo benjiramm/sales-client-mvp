@@ -1,17 +1,25 @@
 import { ShiftType } from "@/types/shift_type";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
-import styles from "../styles/new_shift.module.css";
+import styles from "../../styles/new_shift.module.css";
 import dayjs, { Dayjs } from "dayjs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AddStaffForShift from "@/components/new_shift/AddStaffForShift";
 import useGetItems from "@/hooks/useGetItems";
 import useGetStaff from "@/hooks/useGetStaff";
+import { useDispatch, useSelector } from "react-redux";
+import { clearState } from "@/slices/newShiftSlice";
+import { useRouter } from "next/router";
 
 const NewShift = () => {
   const [shiftDate, setShiftDate] = useState(dayjs().format("YYYY-MM-DD"));
   const [shiftType, setShiftType] = useState<ShiftType | null>(null);
+
+  const shiftStaffState = useSelector((store: any) => store.new_shift.staff);
+  const dispatch = useDispatch();
+
+  const router = useRouter();
 
   // create date string
   const dateString =
@@ -34,6 +42,28 @@ const NewShift = () => {
   const items = useGetItems()?.data;
   //fetching the staff
   const staff = useGetStaff()?.data;
+
+  const mutation = useMutation({
+    mutationFn: (newShift: any) => {
+      return axios.post("http://localhost:3000/shifts", newShift, {
+        withCredentials: true,
+      });
+    },
+  });
+
+  const handleSubmit = () => {
+    const newShift = {
+      shift_type: shiftType,
+      date: new Date(shiftDate),
+      staff: shiftStaffState,
+    };
+
+    dispatch(clearState());
+
+    mutation.mutate(newShift);
+
+    router.push("/");
+  };
 
   if (!(staff || items)) {
     return (
@@ -92,10 +122,15 @@ const NewShift = () => {
           {/** add staff to new shift */}
           <AddStaffForShift />
 
-          <div className={`${styles.form_button} ${styles.save}`}>
-            {" "}
-            <FontAwesomeIcon icon="floppy-disk" /> שמור שינויים
-          </div>
+          {shiftType && shiftStaffState.length > 0 && (
+            <div
+              className={`${styles.form_button} ${styles.save}`}
+              onClick={() => handleSubmit()}
+            >
+              {" "}
+              <FontAwesomeIcon icon="floppy-disk" /> שמור שינויים
+            </div>
+          )}
         </div>
       </div>
     </>

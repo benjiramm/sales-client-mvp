@@ -22,10 +22,6 @@ const NewEmptyStaff = (props: { deleteFunction: Function }) => {
     props.deleteFunction();
   };
 
-  // filters out the selected staff from the dropdown menu
-  console.log(selectedStaff);
-  console.log(staff);
-
   let staffToSelect = [] as Array<Staff>;
 
   // TODO - clean up the filter code
@@ -34,7 +30,7 @@ const NewEmptyStaff = (props: { deleteFunction: Function }) => {
       // if staff isnt selected, add it to staffToSelect
       let selected = false;
       selectedStaff.forEach((sel: newStaffType) => {
-        if (sel.staff_id === s._id) {
+        if (sel.staff === s._id) {
           selected = true;
         }
       });

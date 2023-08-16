@@ -3,12 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { type } from "os";
 
 export type newStaffSale = {
-  item_id: string;
+  item: string;
   amount: number;
 };
 
 export type newStaffType = {
-  staff_id: string;
+  staff: string;
   sales: Array<newStaffSale>;
 };
 
@@ -22,10 +22,10 @@ export const newShiftSlice = createSlice({
   reducers: {
     addStaff(state, action) {
       const newSelected = {
-        staff_id: action.payload.staff,
+        staff: action.payload.staff,
         sales: action.payload.items.map((i: Item) => {
           return {
-            item_id: i._id,
+            item: i._id,
             amount: 0,
           };
         }),
@@ -34,27 +34,42 @@ export const newShiftSlice = createSlice({
     },
     removeStaff(state, action) {
       state.staff = state.staff.filter((s) => {
-        if (s.staff_id !== action.payload) {
+        if (s.staff !== action.payload) {
           return s;
         }
       });
     },
     editSaleOfStaff(state, action) {
       state.staff = state.staff.map((staff) => {
-        if (staff.staff_id === action.payload.staff_id) {
-          const newSale = {
-            item_id: action.payload.item_id,
-            amount: action.payload.amount,
-          };
+        if (staff.staff === action.payload.staff_id) {
+          let saleExists = false;
 
-          staff.sales.push(newSale);
+          for (let i = 0; i < staff.sales.length; i++) {
+            if (staff.sales[i].item === action.payload.item_id) {
+              staff.sales[i].amount = action.payload.amount;
+              saleExists = true;
+            }
+          }
+
+          if (!saleExists) {
+            const newSale = {
+              item: action.payload.item_id,
+              amount: action.payload.amount,
+            };
+
+            staff.sales.push(newSale);
+          }
         }
         return staff;
       });
     },
+    clearState(state) {
+      state.staff = [];
+    },
   },
 });
 
-export const { addStaff, removeStaff, editSaleOfStaff } = newShiftSlice.actions;
+export const { addStaff, removeStaff, editSaleOfStaff, clearState } =
+  newShiftSlice.actions;
 
 export default newShiftSlice.reducer;

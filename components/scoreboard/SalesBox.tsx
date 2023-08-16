@@ -6,7 +6,7 @@ const SalesBox = (props: { sales: TScoreboardLineSale[] }) => {
   return (
     <div className={`${styles.sales_box} ${styles.row_item}`}>
       {props.sales.map((sale) => {
-        return <SingleSaleBox sale={sale} />;
+        return <SingleSaleBox sale={sale} key={sale.item} />;
       })}
     </div>
   );

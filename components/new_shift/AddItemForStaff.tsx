@@ -24,7 +24,7 @@ const AddItemForStaff = (props: {
   const [amount, setAmount] = useState(0);
 
   const payloadAdress = {
-    staff_id: props.staff.staff_id,
+    staff_id: props.staff.staff,
     item_id: props.item._id,
   };
 

@@ -19,13 +19,13 @@ const NewStaffSales = (props: { staff: newStaffType }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const staffName = staff.map((s: Staff) => {
-    if (s._id === props.staff.staff_id) {
+    if (s._id === props.staff.staff) {
       return s.staff_name;
     }
   });
 
   const handleDelete = () => {
-    dispatch(removeStaff(props.staff.staff_id));
+    dispatch(removeStaff(props.staff.staff));
   };
   return (
     <>

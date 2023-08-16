@@ -19,7 +19,7 @@ const AddStaffForShift = () => {
         <div className={styles.add_staff_title}>צוות</div>
         {/** staff from context */}
         {staff.map((s) => (
-          <NewStaffSales staff={s} key={s.staff_id} />
+          <NewStaffSales staff={s} key={s.staff} />
         ))}
         {/** empty new staff - depending on state */}
         {newEmptyStaff ? (

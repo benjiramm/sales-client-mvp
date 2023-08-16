@@ -28,12 +28,21 @@ const Navbar = () => {
         </Link>
 
         {user && (
-          <Link href="new_shift">
-            <div className={styles.button}>
-              <FontAwesomeIcon icon="circle-plus" />
-              הכנס מכירות
-            </div>
-          </Link>
+          <>
+            <Link href="/protected/new_shift">
+              <div className={styles.button}>
+                <FontAwesomeIcon icon="circle-plus" />
+                הכנס מכירות
+              </div>
+            </Link>
+
+            <Link href="/protected/history">
+              <div className={styles.button}>
+                <FontAwesomeIcon icon="calendar-alt" />
+                היסטוריה
+              </div>
+            </Link>
+          </>
         )}
       </div>
 
