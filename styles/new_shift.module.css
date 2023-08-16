@@ -154,6 +154,41 @@
     align-self: center;
 }
 
+.form_button {
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.75rem;
+    
+    margin: 1em auto;
+    padding: .2em .5em;
+    color: #fff;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px #aaa;
+    border-style: solid;
+    border-width: 2px;
+    
+    transition: .3s;
+}
+
+.form_button.save {
+    background-color: var(--blue);
+    border-color: transparent;
+}
+
+.form_button.add {
+    background-color: var(--green);
+    border-color: transparent;
+    margin: .5em;
+}
+
+.form_button:hover{
+    border-color: var(--black);
+    color: var(--black);
+    background-color: #fff;
+}
+
+
 
 
 

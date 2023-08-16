@@ -91,6 +91,11 @@ const NewShift = () => {
 
           {/** add staff to new shift */}
           <AddStaffForShift />
+
+          <div className={`${styles.form_button} ${styles.save}`}>
+            {" "}
+            <FontAwesomeIcon icon="floppy-disk" /> שמור שינויים
+          </div>
         </div>
       </div>
     </>

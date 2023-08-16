@@ -26,7 +26,7 @@ const AddStaffForShift = () => {
           <NewEmptyStaff deleteFunction={() => setNewEmptyStaff(false)} />
         ) : (
           <div
-            className={styles.new_staff_button}
+            className={`${styles.form_button} ${styles.add}`}
             onClick={() => setNewEmptyStaff(true)}
           >
             <FontAwesomeIcon icon="person-circle-plus" /> הוסף צוות
