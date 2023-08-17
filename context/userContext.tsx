@@ -5,6 +5,7 @@ import { FunctionDeclaration, FunctionExpression } from "typescript";
 
 export type User = {
   username: string;
+  _id: string;
   is_admin: boolean;
 };
 

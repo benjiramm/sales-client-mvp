@@ -8,4 +8,5 @@ const useGetItems = () =>
       return axios.get("http://localhost:3000/items");
     },
   }).data;
+
 export default useGetItems;

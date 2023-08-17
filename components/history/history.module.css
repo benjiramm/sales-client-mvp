@@ -1,0 +1,54 @@
+.shift_container {
+    margin: 1em;
+}
+
+.shift_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.shift_title {
+    font-family: 'Secular One', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.shift_type_icon {
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    padding: .5em;
+    text-align: center;
+    line-height: 1em;
+    vertical-align: middle;
+    transition: .5s;
+    font-size: 1.25em;
+}
+
+.shift_type_icon.morning {
+    background-color: aquamarine;
+    color: yellow;
+}
+
+.shift_type_icon.evening {
+    background-color: navy;
+    color: antiquewhite;
+}
+
+.cluster_container {
+    padding: 0 1em;
+}
+
+.cluster_title {
+    justify-self: flex-start;
+    color: #777 ;
+    font-family: 'Heebo', sans-serif;
+}
+
+.cluster_delete_button {
+    font-size: 1em;
+}

@@ -15,7 +15,6 @@ const Navbar = () => {
     router.push("/");
     setUser(null);
   };
-
   return (
     <div className={styles.main_bar}>
       {/** Logo display and secure links */}

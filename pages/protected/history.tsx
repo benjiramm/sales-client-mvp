@@ -2,13 +2,18 @@ import useGetHistory from "@/hooks/useGetHistory";
 import dayjs from "dayjs";
 import { useState } from "react";
 import new_shift_styles from "../../styles/new_shift.module.css";
+import HistoryShift from "@/components/history/HistoryShift";
+import { HTShift } from "@/types/history";
 
 const ShiftHistory = () => {
   const [date, setDate] = useState(dayjs().format("YYYY-MM-DD"));
 
   const dateString = getDateStringForHistory(date);
 
-  const history = useGetHistory(date);
+  const history = useGetHistory(
+    dayjs(date).startOf("week").format("YYYY-MM-DD")
+  )?.data;
+
   return (
     <div className="main-page">
       <h1 className="title">היסטוריית מכירות</h1>
@@ -20,7 +25,10 @@ const ShiftHistory = () => {
           className={new_shift_styles.date_input}
           onChange={(e) => setDate(dayjs(e.target.value).format("YYYY-MM-DD"))}
         />
-        <p>{JSON.stringify(history.data?.data)}</p>
+        {history &&
+          history.map((shift: HTShift) => (
+            <HistoryShift shift={shift} key={shift._id.date + shift._id.date} />
+          ))}
       </div>
     </div>
   );
