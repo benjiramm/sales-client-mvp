@@ -16,6 +16,11 @@ export default function Document() {
         <Main />
         <NextScript />
       </body>
+      {/* <footer className="footer">
+        <p>
+          האפליקציה הזאת פותחה ע״י <strong>בנג׳י רם</strong>
+        </p>
+      </footer> */}
     </Html>
   );
 }

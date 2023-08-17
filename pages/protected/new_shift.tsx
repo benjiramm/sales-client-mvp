@@ -49,6 +49,10 @@ const NewShift = () => {
         withCredentials: true,
       });
     },
+    onSuccess: () => {
+      dispatch(clearState());
+      router.push("/");
+    },
   });
 
   const handleSubmit = () => {
@@ -58,14 +62,10 @@ const NewShift = () => {
       staff: shiftStaffState,
     };
 
-    dispatch(clearState());
-
     mutation.mutate(newShift);
-
-    router.push("/");
   };
 
-  if (!(staff || items)) {
+  if (!staff || !items) {
     return (
       <>
         <h1>loading</h1>
