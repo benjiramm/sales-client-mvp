@@ -12,21 +12,21 @@ const HistoryShift = (props: { shift: HTShift }) => {
   const { shift } = props;
   const user = useContext(UserContext).user as User;
 
-  let dateTitle = new Date(shift._id.date).toLocaleDateString("he-IS", {
+  let dateTitle = new Date(shift.date).toLocaleDateString("he-IS", {
     weekday: "long",
     day: "numeric",
     month: "long",
   });
   dateTitle +=
-    " - " + (shift._id.shift_type === ShiftType.morning ? "בוקר" : "ערב");
+    " - " + (shift.shift_type === ShiftType.morning ? "בוקר" : "ערב");
   return (
     <div className={styles.shift_container}>
       <div className={styles.shift_header}>
         <div className={styles.shift_title}>
           <FontAwesomeIcon
-            icon={shift._id.shift_type === ShiftType.morning ? "sun" : "moon"}
+            icon={shift.shift_type === ShiftType.morning ? "sun" : "moon"}
             className={`${styles.shift_type_icon} ${
-              shift._id.shift_type === ShiftType.morning
+              shift.shift_type === ShiftType.morning
                 ? styles.morning
                 : styles.evening
             }`}

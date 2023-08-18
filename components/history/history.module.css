@@ -8,6 +8,7 @@
     justify-content: space-between;
     flex-wrap: nowrap;
     align-items: center;
+
 }
 
 .shift_title {
@@ -40,15 +41,44 @@
 }
 
 .cluster_container {
-    padding: 0 1em;
+    padding: .5em;
+    margin: .5em;
+    background-color: var(--lighter-gray);
+    border-radius: 10px;
+    box-shadow: 2px 3px 3px #ccc;
 }
 
 .cluster_title {
     justify-self: flex-start;
-    color: #777 ;
+    color: var(--black);
     font-family: 'Heebo', sans-serif;
 }
 
 .cluster_delete_button {
     font-size: 1em;
+}
+
+.staffs_container {
+    margin: .5em 0;
+}
+
+.staff_row {
+    display: flex;
+    align-items: center;
+    padding: .5em;
+    gap: .5em;
+}
+
+.staff_score_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em 1em;
+    gap: 2em;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    background-color: var(--main-gray);
+    box-shadow: 2px 3px 2px #aaa;
+    flex-grow: 1;
 }

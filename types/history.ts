@@ -19,15 +19,12 @@ export type HTStaff = {
 export type HTCluster = {
   timestamp: string;
   author: string; //user id
+  username: string;
   staffs: Array<HTStaff>;
 };
 
-export type HTShiftID = {
-  date: number;
-  shift_type: ShiftType;
-};
-
 export type HTShift = {
-  _id: HTShiftID;
+  date: string;
+  shift_type: ShiftType;
   clusters: Array<HTCluster>;
 };

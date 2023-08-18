@@ -1,6 +1,6 @@
 import useGetHistory from "@/hooks/useGetHistory";
 import dayjs from "dayjs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import new_shift_styles from "../../styles/new_shift.module.css";
 import HistoryShift from "@/components/history/HistoryShift";
 import { HTShift } from "@/types/history";
@@ -12,7 +12,15 @@ const ShiftHistory = () => {
 
   const history = useGetHistory(
     dayjs(date).startOf("week").format("YYYY-MM-DD")
-  )?.data;
+  );
+
+  if (history.isError) {
+    return <p>תקלה בקריאת הנתונים</p>;
+  }
+
+  if (history.isLoading) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="main-page">
@@ -26,8 +34,8 @@ const ShiftHistory = () => {
           onChange={(e) => setDate(dayjs(e.target.value).format("YYYY-MM-DD"))}
         />
         {history &&
-          history.map((shift: HTShift) => (
-            <HistoryShift shift={shift} key={shift._id.date + shift._id.date} />
+          history.data.data.map((shift: HTShift) => (
+            <HistoryShift shift={shift} key={shift.shift_type + shift.date} />
           ))}
       </div>
     </div>

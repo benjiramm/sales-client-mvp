@@ -4,9 +4,10 @@ import new_shift_styles from "../../styles/new_shift.module.css";
 import { useContext } from "react";
 import { User, UserContext } from "@/context/userContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HistoryStaff from "./HistoryStaff";
 
 const HistoryCluster = (props: { cluster: HTCluster }) => {
-  const { author, timestamp, staffs } = props.cluster;
+  const { username, author, timestamp, staffs } = props.cluster;
   const user = useContext(UserContext).user as User;
 
   const clusterString =
@@ -15,7 +16,9 @@ const HistoryCluster = (props: { cluster: HTCluster }) => {
       day: "numeric",
       weekday: "long",
       month: "long",
-    });
+    }) +
+    " על ידי " +
+    username;
   return (
     <div className={styles.cluster_container}>
       <div className={styles.shift_header}>
@@ -27,6 +30,11 @@ const HistoryCluster = (props: { cluster: HTCluster }) => {
             <FontAwesomeIcon icon="trash-can" />
           </div>
         )}
+      </div>
+      <div className={styles.staffs_container}>
+        {staffs.map((staff) => {
+          return <HistoryStaff staff={staff} author={author} />;
+        })}
       </div>
     </div>
   );

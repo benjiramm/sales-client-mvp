@@ -9,6 +9,6 @@ const useGetHistory = (date: string) =>
         withCredentials: true,
       });
     },
-  }).data;
+  });
 
 export default useGetHistory;
