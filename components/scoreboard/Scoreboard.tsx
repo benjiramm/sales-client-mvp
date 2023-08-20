@@ -17,7 +17,7 @@ export type TScoreboardLineSale = {
 
 const Scoreboard = (props: { scoreboard: TScoreboardLine[] }) => {
   return (
-    <div className="main-container">
+    <>
       {props.scoreboard.map((line) => {
         return (
           <>
@@ -25,7 +25,7 @@ const Scoreboard = (props: { scoreboard: TScoreboardLine[] }) => {
           </>
         );
       })}
-    </div>
+    </>
   );
 };
 

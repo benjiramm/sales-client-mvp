@@ -42,7 +42,7 @@ const ShiftHistory = () => {
   );
 };
 
-const getDateStringForHistory = (date: string) => {
+export const getDateStringForHistory = (date: string) => {
   return dayjs().startOf("week").isSame(dayjs(date).startOf("week"), "day")
     ? "השבוע הנוכחי"
     : `השבוע של ${new Date(
