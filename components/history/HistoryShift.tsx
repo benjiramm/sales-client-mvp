@@ -7,10 +7,13 @@ import cluster from "cluster";
 import HistoryCluster from "./HistoryCluster";
 import { useContext } from "react";
 import { User, UserContext, UserContextType } from "@/context/userContext";
+import { useDeleteShift } from "@/mutations/useDeleteShift";
+import dayjs from "dayjs";
 
 const HistoryShift = (props: { shift: HTShift }) => {
   const { shift } = props;
   const user = useContext(UserContext).user as User;
+  const deleteShift = useDeleteShift();
 
   let dateTitle = new Date(shift.date).toLocaleDateString("he-IS", {
     weekday: "long",
@@ -19,6 +22,18 @@ const HistoryShift = (props: { shift: HTShift }) => {
   });
   dateTitle +=
     " - " + (shift.shift_type === ShiftType.morning ? "בוקר" : "ערב");
+
+  const handleDeleteShift = () => {
+    const shift_id = {
+      date: shift.date,
+      shift_type: shift.shift_type,
+    };
+
+    //TODO - pop up to confirm
+
+    deleteShift.mutate(shift_id);
+  };
+
   return (
     <div className={styles.shift_container}>
       <div className={styles.shift_header}>
@@ -34,14 +49,21 @@ const HistoryShift = (props: { shift: HTShift }) => {
           <h1>{dateTitle}</h1>
         </div>
         {user && user.is_admin && (
-          <div className={new_shift_styles.delete_button}>
+          <div
+            className={new_shift_styles.delete_button}
+            onClick={() => handleDeleteShift()}
+          >
             <FontAwesomeIcon icon="trash-can" />
           </div>
         )}
       </div>
       <div>
         {shift.clusters.map((cluster) => (
-          <HistoryCluster cluster={cluster} key={cluster.timestamp} />
+          <HistoryCluster
+            cluster={cluster}
+            key={cluster.timestamp}
+            shift_id={{ date: shift.date, shift_type: shift.shift_type }}
+          />
         ))}
       </div>
     </div>

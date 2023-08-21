@@ -28,6 +28,7 @@ const Login = () => {
       setUser({
         username: userData.data.username,
         is_admin: userData.data.is_admin,
+        _id: userData.data._id,
       });
       router.push("/");
     },
