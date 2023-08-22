@@ -13,12 +13,18 @@ import scoreboardStyles from "../../components/scoreboard/scoreboard.module.css"
 const NewStaffSales = (props: { staff: newStaffType }) => {
   const dispatch = useDispatch();
 
-  const items = useGetItems()?.data as Array<Item>;
-  const staff = useGetStaff()?.data as Array<Staff>;
+  const items = useGetItems();
+  const staff = useGetStaff();
 
   const [collapsed, setCollapsed] = useState(false);
 
-  const staffName = staff.map((s: Staff) => {
+  if (items.isLoading || staff.isLoading) {
+    return <h1>Loading...</h1>;
+  }
+  if (items.isError || staff.isError) {
+    return <h1>Server Error</h1>;
+  }
+  const staffName = staff.data?.data.map((s: Staff) => {
     if (s._id === props.staff.staff) {
       return s.staff_name;
     }
@@ -51,7 +57,7 @@ const NewStaffSales = (props: { staff: newStaffType }) => {
           }
         >
           {items &&
-            items.map((i) => (
+            items.data.data.map((i: Item) => (
               <AddItemForStaff
                 item={i}
                 staff={props.staff}

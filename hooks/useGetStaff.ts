@@ -7,5 +7,5 @@ const useGetStaff = () =>
     queryFn: () => {
       return axios.get("http://localhost:3000/staff");
     },
-  }).data;
+  });
 export default useGetStaff;

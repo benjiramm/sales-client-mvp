@@ -75,7 +75,7 @@ const NewShift = () => {
 
   return (
     <>
-      <div className="main-page">
+      <main className="main-page">
         <h1 className="title">הכנסת מכירות</h1>
         <div className="main-container">
           <h1 className={styles.date_title}>{dateString}</h1>
@@ -132,7 +132,7 @@ const NewShift = () => {
             </div>
           )}
         </div>
-      </div>
+      </main>
     </>
   );
 };

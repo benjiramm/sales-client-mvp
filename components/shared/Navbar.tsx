@@ -43,6 +43,24 @@ const Navbar = () => {
             </Link>
           </>
         )}
+
+        {
+          <>
+            <Link href="/items">
+              <div className={styles.button}>
+                <FontAwesomeIcon icon="list" />
+                פריטים
+              </div>
+            </Link>
+
+            <Link href="/staff">
+              <div className={styles.button}>
+                <FontAwesomeIcon icon="users" />
+                עובדים
+              </div>
+            </Link>
+          </>
+        }
       </div>
 
       <div className={styles.navbar_section}>

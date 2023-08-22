@@ -23,7 +23,7 @@ const ShiftHistory = () => {
   }
 
   return (
-    <div className="main-page">
+    <main className="main-page">
       <h1 className="title">היסטוריית מכירות</h1>
       <div className="main-container">
         <h1 className={new_shift_styles.date_title}>{dateString}</h1>
@@ -38,7 +38,7 @@ const ShiftHistory = () => {
             <HistoryShift shift={shift} key={shift.shift_type + shift.date} />
           ))}
       </div>
-    </div>
+    </main>
   );
 };
 

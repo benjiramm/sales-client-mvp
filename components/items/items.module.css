@@ -1,0 +1,120 @@
+.values_box {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.single_time_value {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
+
+.value_number {
+    width: 2em;
+    font-family: 'Secular One', sans-serif;
+}
+
+.time_icon{
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    padding: .5em;
+    text-align: center;
+    line-height: 1em;
+    vertical-align: middle;
+    transition: .5s;
+    font-size: 1.25em;
+    box-shadow: 2px 3px 3px #888;
+}
+
+.time_icon.morning {
+    background-color: aquamarine;
+    color: yellow;
+}
+
+.time_icon.evening {
+    background-color: navy;
+    color: antiquewhite;
+}
+
+.item_icon {
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: transparent;
+    padding: .5em;
+    text-align: center;
+    line-height: 1em;
+    vertical-align: middle;
+    transition: .5s;
+    font-size: 1.25em;
+    border-style: solid;
+    filter: drop-shadow(1px 2px 2px #666);
+}
+
+.row_title {
+    text-align: right;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-family: 'Secular One', sans-serif;
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
+
+.options {
+    display: flex;
+    gap: .5em;
+}
+
+.input {
+    font-size: 1.25em;
+    font-family: 'Secular One', sans-serif;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--lighter-gray);
+}
+
+.value_input {
+    width: 2em;
+}
+
+/** NEW ITEM **/
+.form_background {
+    background-color: var(--main-gray);
+    border-radius: 10px;
+    box-shadow: 2px 3px 3px #ccc;
+    margin: 1em;
+    padding: 0 1em 1em;
+    
+}
+
+.new_item_title {
+    font-size: 2.5em;
+    font-family: 'Heebo', sans-serif;
+}
+
+.form_entries {
+    width:40%;
+    margin: 0 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-family: 'Secular One', sans-serif;
+    align-content: center;
+}
+
+.form_entry {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    gap: 1em;
+}
+
+.form_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

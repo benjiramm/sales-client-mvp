@@ -13,20 +13,20 @@ const NewEmptyStaff = (props: { deleteFunction: Function }) => {
     (store: any) => store.new_shift.staff
   ) as Array<newStaffType>;
 
-  const staff = useGetStaff()?.data;
-  const items = useGetItems()?.data;
+  const staff = useGetStaff();
+  const items = useGetItems();
 
   const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     // handle select
-    dispatch(addStaff({ staff: e.target.value, items: items }));
+    dispatch(addStaff({ staff: e.target.value, items: items.data?.data }));
     props.deleteFunction();
   };
 
   let staffToSelect = [] as Array<Staff>;
 
   // TODO - clean up the filter code
-  if (staff) {
-    staff.map((s: Staff) => {
+  if (staff.isSuccess) {
+    staff.data.data.map((s: Staff) => {
       // if staff isnt selected, add it to staffToSelect
       let selected = false;
       selectedStaff.forEach((sel: newStaffType) => {
