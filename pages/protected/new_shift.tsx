@@ -11,6 +11,7 @@ import useGetStaff from "@/hooks/useGetStaff";
 import { useDispatch, useSelector } from "react-redux";
 import { clearState } from "@/slices/newShiftSlice";
 import { useRouter } from "next/router";
+import Spinner from "@/components/shared/Spinner";
 
 const NewShift = () => {
   const [shiftDate, setShiftDate] = useState(dayjs().format("YYYY-MM-DD"));
@@ -66,11 +67,7 @@ const NewShift = () => {
   };
 
   if (!staff || !items) {
-    return (
-      <>
-        <h1>loading</h1>
-      </>
-    ); //TODO - insert spinner to load
+    return <Spinner />;
   }
 
   return (

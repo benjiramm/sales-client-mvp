@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import new_shift_styles from "../../styles/new_shift.module.css";
 import HistoryShift from "@/components/history/HistoryShift";
 import { HTShift } from "@/types/history";
+import Spinner from "@/components/shared/Spinner";
 
 const ShiftHistory = () => {
   const [date, setDate] = useState(dayjs().format("YYYY-MM-DD"));
@@ -19,7 +20,7 @@ const ShiftHistory = () => {
   }
 
   if (history.isLoading) {
-    return <h1>Loading...</h1>;
+    return <Spinner />;
   }
 
   return (

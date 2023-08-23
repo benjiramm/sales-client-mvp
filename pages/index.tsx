@@ -14,6 +14,7 @@ import {
   useGetLeaderboard,
   useGetLeaderboardPrivate,
 } from "@/hooks/useGetLeaderboard";
+import Spinner from "@/components/shared/Spinner";
 
 export default function Home() {
   const { user } = useContext(UserContext);
@@ -30,7 +31,7 @@ export default function Home() {
   }
 
   if (leaderboard.isLoading) {
-    return <h1>Loading...</h1>;
+    return <Spinner />;
   }
 
   return (
