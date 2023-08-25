@@ -1,29 +1,32 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import Spinner from "@/components/shared/Spinner";
+import UserRow from "@/components/users/UserRow";
+import { UserContext } from "@/context/userContext";
+import useGetUsers from "@/hooks/useGetUsers";
+import { User } from "@/types/user";
+import { useContext } from "react";
 
 const Users = () => {
-  const usersQuery = useQuery({
-    queryKey: ["users"],
-    queryFn: () => {
-      return axios.get("http://localhost:3000/users", {
-        withCredentials: true,
-      });
-    },
-  });
+  const { user } = useContext(UserContext);
+  const { data, isError, isLoading } = useGetUsers();
 
-  if (usersQuery.isLoading) return <p>Loading...</p>;
-  if (usersQuery.isError)
-    return <p>Couldn't get users, something went wrong</p>;
-
+  if (isLoading) {
+    return <Spinner />;
+  }
+  if (isError) {
+    return <h1>Server Error</h1>;
+  }
   return (
     <>
-      {usersQuery.data?.data.map((row: any) => {
-        return (
-          <li>
-            {row.username}, is_admin= {JSON.stringify(row.is_admin)}
-          </li>
-        );
-      })}
+      <main className="main-page">
+        <h1 className="title">מנהלים</h1>
+        <div className="main-container">
+          {data.data.map((u: User) => (
+            <UserRow displayed_user={u} key={u._id} />
+          ))}
+        </div>
+        {/* {user && user.is_admin && <NewStaffButton />} */}
+      </main>
+      ;
     </>
   );
 };

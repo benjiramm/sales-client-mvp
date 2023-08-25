@@ -41,6 +41,15 @@ const Navbar = () => {
                 היסטוריה
               </div>
             </Link>
+
+            {user.is_admin && (
+              <Link href={"/protected/users"}>
+                <div className={styles.button}>
+                  <FontAwesomeIcon icon="user-tie" />
+                  מנהלים
+                </div>
+              </Link>
+            )}
           </>
         )}
 

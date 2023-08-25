@@ -118,3 +118,8 @@
     justify-content: space-between;
     align-items: center;
 }
+
+/* Users */
+.admin_header {
+    font-family: 'Heebo', sans-serif;
+}
