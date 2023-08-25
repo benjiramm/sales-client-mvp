@@ -6,8 +6,8 @@ import styles from "./items.module.css";
 import button_styles from "../../styles/buttons.module.css";
 import { useContext, useState } from "react";
 import { UserContext } from "@/context/userContext";
-import { useDeleteItem } from "@/mutations/useDeleteItem";
-import { useEditItem } from "@/mutations/useEditItem";
+import { useDeleteItem } from "@/mutations/items/useDeleteItem";
+import { useEditItem } from "@/mutations/items/useEditItem";
 
 const ItemRow = (props: { item: Item }) => {
   const { item } = props;

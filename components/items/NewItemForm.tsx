@@ -3,7 +3,7 @@ import { IconPicker } from "react-fa-icon-picker";
 import styles from "./items.module.css";
 import button_styles from "../../styles/buttons.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAddItem } from "@/mutations/useAddItem";
+import { useAddItem } from "@/mutations/items/useAddItem";
 
 const NewItemForm = (props: { deleteFunction: Function }) => {
   const [icon, setIcon] = useState("");
