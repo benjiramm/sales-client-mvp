@@ -1,4 +1,5 @@
 import Spinner from "@/components/shared/Spinner";
+import NewUserButton from "@/components/users/NewUserButton";
 import UserRow from "@/components/users/UserRow";
 import { UserContext } from "@/context/userContext";
 import useGetUsers from "@/hooks/useGetUsers";
@@ -24,7 +25,7 @@ const Users = () => {
             <UserRow displayed_user={u} key={u._id} />
           ))}
         </div>
-        {/* {user && user.is_admin && <NewStaffButton />} */}
+        {user && user.is_admin && <NewUserButton />}
       </main>
       ;
     </>

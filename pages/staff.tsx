@@ -4,7 +4,7 @@ import StaffRow from "@/components/staff/StaffRow";
 import { UserContext } from "@/context/userContext";
 import useGetStaff from "@/hooks/useGetStaff";
 import { Staff } from "@/types/staff";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Staff = () => {
   const { user } = useContext(UserContext);

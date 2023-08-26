@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "@/context/userContext";
 import { useDeleteItem } from "@/mutations/items/useDeleteItem";
 import { useEditItem } from "@/mutations/items/useEditItem";
+import DeleteModal from "../modal/DeleteModal";
 
 const ItemRow = (props: { item: Item }) => {
   const { item } = props;
@@ -20,8 +21,10 @@ const ItemRow = (props: { item: Item }) => {
   const [eveningValue, setEveningValue] = useState(item.value_evening);
   const [itemName, setItemName] = useState(item.item_name);
 
+  const [deleteModal, setDeleteModal] = useState(false);
+
   const handleDeleteItem = () => {
-    deleteItem.mutate(item._id);
+    setDeleteModal(true);
   };
 
   const handleEditItem = () => {
@@ -133,6 +136,13 @@ const ItemRow = (props: { item: Item }) => {
             </div>
           )}
         </div>
+        {deleteModal && (
+          <DeleteModal
+            closeFunction={() => setDeleteModal(false)}
+            deleteFunction={() => deleteItem.mutate(item._id)}
+            target={`הפריט מכירה ״${item.item_name}״`}
+          />
+        )}
       </div>
     </>
   );

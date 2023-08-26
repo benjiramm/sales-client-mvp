@@ -5,12 +5,12 @@ import axios from "axios";
 
 type UserToAddType = {
   username: string;
-  is_admin: boolean;
+  password: string;
 };
 
 export const useAddUser = () =>
   useMutation({
-    mutationFn: (new_user: User) => {
+    mutationFn: (new_user: UserToAddType) => {
       return axios.post(`http://localhost:3000/users`, new_user, {
         withCredentials: true,
       });

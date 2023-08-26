@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { User } from "@/types/user";
 import { useDeleteUser } from "@/mutations/users/useDeleteUser";
 import { useEditUser } from "@/mutations/users/useEditUser";
+import DeleteModal from "../modal/DeleteModal";
 
 const UserRow = (props: { displayed_user: User }) => {
   const { displayed_user } = props;
@@ -23,9 +24,11 @@ const UserRow = (props: { displayed_user: User }) => {
   const [username, setUsername] = useState(displayed_user.username);
   const [is_admin, setIs_admin] = useState(displayed_user.is_admin);
 
+  const [deleteModal, setDeleteModal] = useState(false);
+
   // handler functions
   const handleDeleteUser = () => {
-    deleteUser.mutate(displayed_user._id);
+    setDeleteModal(true);
   };
   const handleEditUser = () => {
     const change_user = {
@@ -114,6 +117,13 @@ const UserRow = (props: { displayed_user: User }) => {
               </>
             )}
           </div>
+        )}
+        {deleteModal && (
+          <DeleteModal
+            closeFunction={() => setDeleteModal(false)}
+            deleteFunction={() => deleteUser.mutate(displayed_user._id)}
+            target={`המנהל/ת ״${displayed_user.username}״`}
+          />
         )}
       </div>
     </>

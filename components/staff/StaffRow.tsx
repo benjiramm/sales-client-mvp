@@ -7,6 +7,7 @@ import { UserContext } from "@/context/userContext";
 import { useDeleteStaff } from "@/mutations/staff/useDeleteStaff";
 import { useEditStaff } from "@/mutations/staff/useEditStaff";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DeleteModal from "../modal/DeleteModal";
 
 const StaffRow = (props: { staff: Staff }) => {
   const { staff } = props;
@@ -17,8 +18,10 @@ const StaffRow = (props: { staff: Staff }) => {
   const [editMode, setEditMode] = useState(false);
   const [staffName, setStaffName] = useState(staff.staff_name);
 
+  const [deleteModal, setDeleteModal] = useState(false);
+
   const handleDeleteStaff = () => {
-    deleteStaff.mutate(staff._id);
+    setDeleteModal(true);
   };
   const handleEditStaff = () => {
     const change_staff = {
@@ -85,6 +88,13 @@ const StaffRow = (props: { staff: Staff }) => {
               </>
             )}
           </div>
+        )}
+        {deleteModal && (
+          <DeleteModal
+            closeFunction={() => setDeleteModal(false)}
+            deleteFunction={() => deleteStaff.mutate(staff._id)}
+            target={`העובד/ת ״${staff.staff_name}״`}
+          />
         )}
       </div>
     </>

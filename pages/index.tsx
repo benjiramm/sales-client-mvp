@@ -15,6 +15,7 @@ import {
   useGetLeaderboardPrivate,
 } from "@/hooks/useGetLeaderboard";
 import Spinner from "@/components/shared/Spinner";
+import DeleteModal from "@/components/modal/DeleteModal";
 
 export default function Home() {
   const { user } = useContext(UserContext);

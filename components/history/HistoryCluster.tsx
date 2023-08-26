@@ -1,13 +1,14 @@
 import { HTCluster } from "@/types/history";
 import styles from "./history.module.css";
 import new_shift_styles from "../../styles/new_shift.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { User, UserContext } from "@/context/userContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HistoryStaff from "./HistoryStaff";
-import { useDeleteCluster } from "@/mutations/useDeleteCluster";
+import { ClusterIDType, useDeleteCluster } from "@/mutations/useDeleteCluster";
 import { ShiftType } from "@/types/shift_type";
 import { ShiftIDType } from "@/mutations/useDeleteShift";
+import DeleteModal from "../modal/DeleteModal";
 
 const HistoryCluster = (props: {
   cluster: HTCluster;
@@ -17,6 +18,9 @@ const HistoryCluster = (props: {
   const { date, shift_type } = props.shift_id;
   const user = useContext(UserContext).user as User;
   const deleteCluster = useDeleteCluster();
+
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState({});
 
   const clusterString =
     "התווסף ב" +
@@ -35,7 +39,8 @@ const HistoryCluster = (props: {
       timestamp,
     };
 
-    deleteCluster.mutate(cluster_id);
+    setDeleteId(cluster_id);
+    setDeleteModal(true);
   };
   return (
     <div className={styles.cluster_container}>
@@ -61,6 +66,13 @@ const HistoryCluster = (props: {
           );
         })}
       </div>
+      {deleteModal && (
+        <DeleteModal
+          deleteFunction={() => deleteCluster.mutate(deleteId as ClusterIDType)}
+          closeFunction={() => setDeleteModal(false)}
+          target={`אוסף המכירות שהתווסף ב${clusterString}`}
+        />
+      )}
     </div>
   );
 };

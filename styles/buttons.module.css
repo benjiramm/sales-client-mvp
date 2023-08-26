@@ -43,7 +43,7 @@
     transition: .3s;
 }
 
-.delete_button:hover ,.edit_button:hover , .approve_button:hover{
+.delete_button:hover ,.edit_button:hover , .approve_button:hover ,.back_button:hover{
     background-color: white;
     color: var(--black);
     border-color: var(--black);
@@ -77,9 +77,26 @@
     margin: .5em;
 }
 
+.form_button.back {
+    font-family: 'Secular One', sans-serif;
+    background-color: transparent;
+    border-color: transparent;
+    color: #555;
+    margin: 0;
+}
+
+.form_button.delete {
+    font-family: 'Secular One', sans-serif;
+    background-color: var(--navbar-color);
+    border-color: transparent;
+    margin: 0;
+}
+
 .form_button:hover{
     border-color: var(--black);
     color: var(--black);
     background-color: #fff;
 }
+
+
 

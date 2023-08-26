@@ -1,22 +1,29 @@
 import { HTStaff } from "@/types/history";
 import styles from "./history.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { User, UserContext } from "@/context/userContext";
 import new_shift_styles from "../../styles/new_shift.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import scoreboard_styles from "../scoreboard/scoreboard.module.css";
 import HistorySale from "./HistorySale";
 import { ClusterIDType } from "@/mutations/useDeleteCluster";
-import { useDeleteStaffRow } from "@/mutations/useDeleteStaffRow";
+import {
+  StaffRowIDType,
+  useDeleteStaffRow,
+} from "@/mutations/useDeleteStaffRow";
+import DeleteModal from "../modal/DeleteModal";
 
 const HistoryStaff = (props: {
   staff: HTStaff;
   author: string;
   cluster_id: ClusterIDType;
 }) => {
-  const { staff, author } = props;
+  const { staff, author, cluster_id } = props;
   const user = useContext(UserContext).user as User;
   const deleteStaffRow = useDeleteStaffRow();
+
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState({});
 
   const handleDeleteStaffRow = () => {
     const staff_row_id = {
@@ -24,7 +31,8 @@ const HistoryStaff = (props: {
       staff: staff.staff,
     };
 
-    deleteStaffRow.mutate(staff_row_id);
+    setDeleteId(staff_row_id);
+    setDeleteModal(true);
   };
 
   return (
@@ -52,6 +60,21 @@ const HistoryStaff = (props: {
           </div>
         )}
       </div>
+      {deleteModal && (
+        <DeleteModal
+          deleteFunction={() =>
+            deleteStaffRow.mutate(deleteId as StaffRowIDType)
+          }
+          closeFunction={() => setDeleteModal(false)}
+          target={`המכירות של ${staff.staff_name} שהתווספו ב${new Date(
+            cluster_id.timestamp
+          ).toLocaleTimeString("he-IS", {
+            day: "numeric",
+            weekday: "long",
+            month: "long",
+          })}`}
+        />
+      )}
     </>
   );
 };
