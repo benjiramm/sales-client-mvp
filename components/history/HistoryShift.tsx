@@ -5,15 +5,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ShiftType } from "@/types/shift_type";
 import cluster from "cluster";
 import HistoryCluster from "./HistoryCluster";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { User, UserContext, UserContextType } from "@/context/userContext";
-import { useDeleteShift } from "@/mutations/useDeleteShift";
+import { ShiftIDType, useDeleteShift } from "@/mutations/useDeleteShift";
 import dayjs from "dayjs";
+import DeleteModal from "../modal/DeleteModal";
 
 const HistoryShift = (props: { shift: HTShift }) => {
   const { shift } = props;
   const user = useContext(UserContext).user as User;
   const deleteShift = useDeleteShift();
+
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [deleteId, setDeleteId] = useState({});
 
   let dateTitle = new Date(shift.date).toLocaleDateString("he-IS", {
     weekday: "long",
@@ -28,14 +32,19 @@ const HistoryShift = (props: { shift: HTShift }) => {
       date: shift.date,
       shift_type: shift.shift_type,
     };
-
-    //TODO - pop up to confirm
-
-    deleteShift.mutate(shift_id);
+    setDeleteId(shift_id);
+    setDeleteModal(true);
   };
 
   return (
     <div className={styles.shift_container}>
+      {deleteModal && (
+        <DeleteModal
+          target={`המשמרת של ${dateTitle}`}
+          closeFunction={() => setDeleteModal(false)}
+          deleteFunction={() => deleteShift.mutate(deleteId as ShiftIDType)}
+        />
+      )}
       <div className={styles.shift_header}>
         <div className={styles.shift_title}>
           <FontAwesomeIcon
