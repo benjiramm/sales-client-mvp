@@ -70,7 +70,7 @@ const HistoryCluster = (props: {
         <DeleteModal
           deleteFunction={() => deleteCluster.mutate(deleteId as ClusterIDType)}
           closeFunction={() => setDeleteModal(false)}
-          target={`אוסף המכירות שהתווסף ב${clusterString}`}
+          target={`אוסף המכירות ש${clusterString}`}
         />
       )}
     </div>
