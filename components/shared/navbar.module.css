@@ -13,13 +13,13 @@
 }
 
 .logo_image {
-    height: 80px;
+    height: 3em;
     object-fit: cover;
 }
 
 .logo_title {
     margin: 0 .5em;
-    font-size: 3em;
+    font-size: 2em;
     color: var(--black);
     font-family: 'Secular One', sans-serif;
     text-decoration: none;

@@ -1,6 +1,4 @@
-import { User, UserContext } from "@/context/userContext";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { UserContext } from "@/context/userContext";
 import Link from "next/link";
 import { useContext } from "react";
 import styles from "./navbar.module.css";
@@ -15,6 +13,7 @@ const Navbar = () => {
     router.push("/");
     setUser(null);
   };
+
   return (
     <div className={styles.main_bar}>
       {/** Logo display and secure links */}

@@ -8,6 +8,7 @@ import type { AppProps } from "next/app";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
 import store from "@/store/store";
+
 const { library } = require("@fortawesome/fontawesome-svg-core");
 
 export const queryClient = new QueryClient();
