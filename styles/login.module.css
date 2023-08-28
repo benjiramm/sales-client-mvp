@@ -63,3 +63,21 @@
     margin: auto;
     border-radius: 10px;
 }
+
+@media (max-width: 1200px){
+    .main_card{
+        width: 60%;
+    }
+    .error_banner {
+        width: 60%;
+    }
+}
+
+@media (max-width: 900px){
+    .main_card{
+        width: 80%;
+    }
+    .error_banner {
+        width: 80%;
+    }
+}

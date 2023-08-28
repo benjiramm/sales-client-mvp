@@ -98,5 +98,15 @@
     background-color: #fff;
 }
 
+@media (max-width:900px){
+    .form_button{
+        font-size: 1.25em;
+    }
+
+    .form_button.add{
+        margin: auto;
+    }
+}
+
 
 

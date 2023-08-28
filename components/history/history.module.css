@@ -77,9 +77,28 @@
     align-items: center;
     padding: .5em 1em;
     gap: 2em;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     border-radius: 8px;
     background-color: var(--main-gray);
     box-shadow: 2px 3px 2px #aaa;
     flex-grow: 1;
+}
+
+@media (max-width:900px){
+    .shift_container {
+    margin: 1em .5em;
+    }
+    .shift_header{
+        font-size: .75rem;
+    }
+    .cluster_container {
+        margin: .5rem 0 ;
+    }
+    .staff_score_row{
+        gap: 0;
+        margin: .5rem 0 0;
+    }
+    .staff_row {
+        padding: 0;
+    }
 }
