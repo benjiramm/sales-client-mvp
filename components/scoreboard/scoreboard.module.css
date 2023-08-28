@@ -26,6 +26,7 @@
 
 .sales_box {
     display: flex;
+    flex-wrap: wrap;
     gap: .5em;
     padding: .5em;
     flex-grow: 4;
@@ -41,4 +42,11 @@
     box-shadow:  1px 1px 1px #aaa;
     font-size: 1rem;
     font-family: 'Secular One', sans-serif;
+}
+
+@media (max-width:900px){
+    .row{   
+        padding: .5em;
+        gap:0;
+    }
 }

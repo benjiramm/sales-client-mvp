@@ -123,3 +123,36 @@
 .admin_header {
     font-family: 'Heebo', sans-serif;
 }
+
+@media (max-width: 900px) {
+    .item_icon{
+        font-size: .75em;
+    }
+    .single_time_value {
+        gap: .2em;
+    }
+    .values_box{
+        gap: .5em;
+    }
+    .value_number{
+        width: 1em;
+    }
+    .form_entry {
+        flex-direction: column;
+        width: 100%;
+    }
+    .form_entries{
+        width: 100%;
+        margin: 0;
+        align-items: center;
+    }
+    .new_item_title{
+        font-size: 1.5em;
+    }
+    .form_background {
+        padding: 1em;
+    }
+    .row_title{
+        width: 5em;
+    }
+}

@@ -9,6 +9,8 @@ import { Item } from "@/types/item";
 import AddItemForStaff from "./AddItemForStaff";
 import { useState } from "react";
 import scoreboardStyles from "../../components/scoreboard/scoreboard.module.css";
+import DeleteModal from "../modal/DeleteModal";
+import Spinner from "../shared/Spinner";
 
 const NewStaffSales = (props: { staff: newStaffType }) => {
   const dispatch = useDispatch();
@@ -17,14 +19,16 @@ const NewStaffSales = (props: { staff: newStaffType }) => {
   const staff = useGetStaff();
 
   const [collapsed, setCollapsed] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   if (items.isLoading || staff.isLoading) {
-    return <h1>Loading...</h1>;
+    return <Spinner />;
   }
   if (items.isError || staff.isError) {
     return <h1>Server Error</h1>;
   }
-  const staffName = staff.data?.data.map((s: Staff) => {
+
+  const staffName = staff.data.data.map((s: Staff) => {
     if (s._id === props.staff.staff) {
       return s.staff_name;
     }
@@ -33,6 +37,7 @@ const NewStaffSales = (props: { staff: newStaffType }) => {
   const handleDelete = () => {
     dispatch(removeStaff(props.staff.staff));
   };
+
   return (
     <>
       <div className={styles.staff_row}>
@@ -71,11 +76,18 @@ const NewStaffSales = (props: { staff: newStaffType }) => {
           className={`${styles.delete_button} ${
             collapsed && styles.collapsed_row_item
           }`}
-          onClick={() => handleDelete()}
+          onClick={() => setDeleteModal(true)}
         >
           <FontAwesomeIcon icon="trash-can" />
         </div>
       </div>
+      {deleteModal && (
+        <DeleteModal
+          target={`המכירות של ${staffName}`}
+          closeFunction={() => setDeleteModal(false)}
+          deleteFunction={() => handleDelete()}
+        />
+      )}
     </>
   );
 };

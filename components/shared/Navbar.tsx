@@ -1,6 +1,6 @@
 import { UserContext } from "@/context/userContext";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./navbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/router";
@@ -16,11 +16,25 @@ const Navbar = () => {
     setUser(null);
   };
 
+  useEffect(() => {
+    setExtended(false);
+  }, [router]);
+
   return (
     <>
       <div className={styles.navbar}>
-        <div className={styles.brand_title}>
-          <div className={styles.logo}>LOGO</div>
+        <div className={styles.brand_title} onClick={() => router.push("/")}>
+          <img src="/japanika_logo.svg" className={styles.logo} />
+          <div className={styles.title_text}>תחרות מכירות</div>
+          {user && (
+            <div className={styles.user_status}>
+              <FontAwesomeIcon
+                icon="check"
+                className={styles.status_checkmark}
+              />
+              <div>מחובר, {user.username}</div>
+            </div>
+          )}
         </div>
 
         <div
@@ -60,12 +74,12 @@ const Navbar = () => {
 
             {/* PUBLIC LINKS */}
             <li>
-              <Link href={"items"}>
+              <Link href={"/items"}>
                 <FontAwesomeIcon icon="list" /> פריטים
               </Link>
             </li>
             <li>
-              <Link href={"staff"}>
+              <Link href={"/staff"}>
                 <FontAwesomeIcon icon="users" /> צוות
               </Link>
             </li>
@@ -86,7 +100,7 @@ const Navbar = () => {
               </li>
             ) : (
               <li>
-                <Link href={"login"}>
+                <Link href={"/login"}>
                   <FontAwesomeIcon icon="right-to-bracket" /> התחברי/י
                 </Link>
               </li>

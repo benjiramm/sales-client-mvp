@@ -52,7 +52,7 @@ const NewShift = () => {
     },
     onSuccess: () => {
       dispatch(clearState());
-      router.push("/");
+      router.push("/protected/history");
     },
   });
 

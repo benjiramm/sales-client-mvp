@@ -27,7 +27,6 @@ const Staff = () => {
         </div>
         {user && user.is_admin && <NewStaffButton />}
       </main>
-      ;
     </>
   );
 };

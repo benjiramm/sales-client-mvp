@@ -53,7 +53,7 @@ const HistoryStaff = (props: {
         </div>
         {user && (user.is_admin || user._id === author) && (
           <div
-            className={new_shift_styles.delete_button}
+            className={`${new_shift_styles.delete_button} ${styles.delete_button}`}
             onClick={() => handleDeleteStaffRow()}
           >
             <FontAwesomeIcon icon="trash-can" />
