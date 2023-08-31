@@ -17,6 +17,6 @@ export const useGetLeaderboard = () =>
   useQuery({
     queryKey: ["leaderboard", "public"],
     queryFn: () => {
-      return axios.get<TScoreboardLine[]>("http://localhost:3000/leaderboard");
+      return axios.get<TScoreboardLine[]>(`${process.env.API}/leaderboard`);
     },
   });
