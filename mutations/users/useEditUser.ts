@@ -14,7 +14,7 @@ export const useEditUser = () =>
   useMutation({
     mutationFn: (change_user: ChangeUserType) => {
       return axios.put(
-        `http://localhost:3000/users/${change_user.user_id}`,
+        `${process.env.API}/users/${change_user.user_id}`,
         change_user.payload,
         {
           withCredentials: true,

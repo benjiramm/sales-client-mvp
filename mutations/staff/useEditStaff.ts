@@ -13,7 +13,7 @@ export const useEditStaff = () =>
   useMutation({
     mutationFn: (change_staff: ChangeStaffType) => {
       return axios.put(
-        `http://localhost:3000/staff/${change_staff.staff_id}`,
+        `${process.env.API}/staff/${change_staff.staff_id}`,
         change_staff.payload,
         {
           withCredentials: true,

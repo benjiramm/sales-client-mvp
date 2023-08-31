@@ -5,7 +5,7 @@ const useGetUsers = () =>
   useQuery({
     queryKey: ["users"],
     queryFn: () => {
-      return axios.get("http://localhost:3000/users", {
+      return axios.get(`${process.env.API}/users`, {
         withCredentials: true,
       });
     },

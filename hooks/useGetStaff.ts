@@ -5,7 +5,7 @@ const useGetStaff = () =>
   useQuery({
     queryKey: ["staff"],
     queryFn: () => {
-      return axios.get("http://localhost:3000/staff");
+      return axios.get(`${process.env.API}/staff`);
     },
   });
 export default useGetStaff;

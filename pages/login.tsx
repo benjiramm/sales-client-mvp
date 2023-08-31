@@ -16,13 +16,13 @@ const Login = () => {
 
   const mutation = useMutation({
     mutationFn: (loginPayload: any) => {
-      return axios.post("http://localhost:3000/auth/login", loginPayload, {
+      return axios.post(`${process.env.API}/auth/login`, loginPayload, {
         withCredentials: true,
       });
     },
     onSuccess: async (data) => {
       console.log(data);
-      const userData = await axios.get("http://localhost:3000/auth", {
+      const userData = await axios.get(`${process.env.API}/auth`, {
         withCredentials: true,
       });
       setUser({

@@ -5,7 +5,7 @@ const useGetItems = () =>
   useQuery({
     queryKey: ["items"],
     queryFn: () => {
-      return axios.get("http://localhost:3000/items");
+      return axios.get(`${process.env.API}/items`);
     },
   });
 

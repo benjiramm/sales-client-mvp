@@ -5,7 +5,7 @@ import axios from "axios";
 export const useDeleteItem = () =>
   useMutation({
     mutationFn: (item_id: string) => {
-      return axios.delete(`http://localhost:3000/items/${item_id}`, {
+      return axios.delete(`${process.env.API}/items/${item_id}`, {
         withCredentials: true,
       });
     },

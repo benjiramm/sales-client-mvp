@@ -15,7 +15,7 @@ export const useEditItem = () =>
   useMutation({
     mutationFn: (change_item: ChangeItemType) => {
       return axios.put(
-        `http://localhost:3000/items/${change_item.item_id}`,
+        `${process.env.API}/items/${change_item.item_id}`,
         change_item.payload,
         {
           withCredentials: true,

@@ -9,7 +9,7 @@ type StaffToAddType = {
 export const useAddStaff = () =>
   useMutation({
     mutationFn: (new_staff: StaffToAddType) => {
-      return axios.post(`http://localhost:3000/staff`, new_staff, {
+      return axios.post(`${process.env.API}/staff`, new_staff, {
         withCredentials: true,
       });
     },

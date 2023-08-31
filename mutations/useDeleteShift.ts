@@ -13,7 +13,7 @@ export const useDeleteShift = () =>
   useMutation({
     mutationFn: (shift_id: ShiftIDType) => {
       return axios.delete(
-        `http://localhost:3000/shifts/${shift_id.date}/${shift_id.shift_type}`,
+        `${process.env.API}/shifts/${shift_id.date}/${shift_id.shift_type}`,
         {
           withCredentials: true,
         }

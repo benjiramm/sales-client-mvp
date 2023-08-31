@@ -12,7 +12,7 @@ type NewItemType = {
 export const useAddItem = () =>
   useMutation({
     mutationFn: (new_item: NewItemType) => {
-      return axios.post(`http://localhost:3000/items`, new_item, {
+      return axios.post(`${process.env.API}/items`, new_item, {
         withCredentials: true,
       });
     },

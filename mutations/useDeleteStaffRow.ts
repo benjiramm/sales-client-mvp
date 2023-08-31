@@ -15,7 +15,7 @@ export const useDeleteStaffRow = () =>
   useMutation({
     mutationFn: (staff_row_id: StaffRowIDType) => {
       return axios.delete(
-        `http://localhost:3000/shifts/${staff_row_id.date}/${staff_row_id.shift_type}/${staff_row_id.timestamp}/${staff_row_id.staff}`,
+        `${process.env.API}/shifts/${staff_row_id.date}/${staff_row_id.shift_type}/${staff_row_id.timestamp}/${staff_row_id.staff}`,
         {
           withCredentials: true,
         }

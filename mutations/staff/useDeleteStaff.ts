@@ -5,7 +5,7 @@ import axios from "axios";
 export const useDeleteStaff = () =>
   useMutation({
     mutationFn: (staff_id: string) => {
-      return axios.delete(`http://localhost:3000/staff/${staff_id}`, {
+      return axios.delete(`${process.env.API}/staff/${staff_id}`, {
         withCredentials: true,
       });
     },

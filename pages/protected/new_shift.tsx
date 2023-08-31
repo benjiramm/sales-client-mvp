@@ -46,7 +46,7 @@ const NewShift = () => {
 
   const mutation = useMutation({
     mutationFn: (newShift: any) => {
-      return axios.post("http://localhost:3000/shifts", newShift, {
+      return axios.post(`${process.env.API}/shifts`, newShift, {
         withCredentials: true,
       });
     },

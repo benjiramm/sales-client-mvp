@@ -14,7 +14,7 @@ export const useDeleteCluster = () =>
   useMutation({
     mutationFn: (cluster_id: ClusterIDType) => {
       return axios.delete(
-        `http://localhost:3000/shifts/${cluster_id.date}/${cluster_id.shift_type}/${cluster_id.timestamp}`,
+        `${process.env.API}/shifts/${cluster_id.date}/${cluster_id.shift_type}/${cluster_id.timestamp}`,
         {
           withCredentials: true,
         }

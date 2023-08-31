@@ -7,7 +7,7 @@ export const useGetLeaderboardPrivate = (date: string) =>
     queryKey: ["leaderboard", date],
     queryFn: () => {
       return axios.get<TScoreboardLine[]>(
-        `http://localhost:3000/leaderboard/${date}`,
+        `${process.env.API}/leaderboard/${date}`,
         { withCredentials: true }
       );
     },

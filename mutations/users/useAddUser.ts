@@ -11,7 +11,7 @@ type UserToAddType = {
 export const useAddUser = () =>
   useMutation({
     mutationFn: (new_user: UserToAddType) => {
-      return axios.post(`http://localhost:3000/users`, new_user, {
+      return axios.post(`${process.env.API}/users`, new_user, {
         withCredentials: true,
       });
     },

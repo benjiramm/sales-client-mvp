@@ -5,7 +5,7 @@ const useGetHistory = (date: string) =>
   useQuery({
     queryKey: ["history", date],
     queryFn: () => {
-      return axios.get(`http://localhost:3000/shifts/${date}`, {
+      return axios.get(`${process.env.API}/shifts/${date}`, {
         withCredentials: true,
       });
     },
