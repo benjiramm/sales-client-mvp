@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 import store from "@/store/store";
 
 const { library } = require("@fortawesome/fontawesome-svg-core");
-require("dotenv").config();
 
 export const queryClient = new QueryClient();
 
