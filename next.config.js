@@ -4,3 +4,10 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+
+module.exports = {
+  reactStrictMode: true,
+  env: {
+    API: process.env.API,
+  }
+}
