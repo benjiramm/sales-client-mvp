@@ -8,6 +8,6 @@ module.exports = nextConfig
 module.exports = {
   reactStrictMode: true,
   env: {
-    API: process.env.NEXT_PUBLIC_API,
+    API: 'https://sales-app-v2-server-d4fa7347984d.herokuapp.com',
   }
 }
