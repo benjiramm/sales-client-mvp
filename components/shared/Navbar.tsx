@@ -32,7 +32,7 @@ const Navbar = () => {
                 icon="check"
                 className={styles.status_checkmark}
               />
-              <div>מחובר, {user.username}</div>
+              <div>{user.username}</div>
             </div>
           )}
         </div>

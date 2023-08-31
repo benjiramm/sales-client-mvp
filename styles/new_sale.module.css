@@ -21,7 +21,7 @@
 
 .input {
     font-size: 1.25em;
-    width: 2em;
+    width: 1em;
     font-family: 'Secular One', sans-serif;
     text-align: center;
 }
@@ -32,8 +32,8 @@
     padding: .3em;
     font-size: 1.25em;
     box-shadow: 2px 2px 2px #aaa;
-    width: 1em;
-    height: 1em;
+    width: 1rem;
+    height: 1rem;
     cursor: pointer;
     
     border-style: solid;
