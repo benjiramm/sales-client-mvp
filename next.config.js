@@ -7,7 +7,7 @@ module.exports = nextConfig
 
 module.exports = {
   env: {
-    API: 'https://sales-app-v2-server-d4fa7347984d.herokuapp.com',
+    API: 'http://www.sellingcompetition.com',
     //API: 'http://localhost:3000'
   }
 }
