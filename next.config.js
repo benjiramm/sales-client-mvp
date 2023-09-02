@@ -7,7 +7,7 @@ module.exports = nextConfig
 
 module.exports = {
   env: {
-    API: 'http://www.sellingcompetition.com',
+    API: 'http://www.api.sellingcompetition.com',
     //API: 'http://localhost:3000'
   }
 }
