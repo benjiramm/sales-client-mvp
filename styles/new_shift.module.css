@@ -106,6 +106,11 @@
     border-style: solid;
     transition: .3s;
 }
+.delete_button:hover {
+    background-color: white;
+    color: var(--black);
+    border-color: var(--black);
+}
 
 .staff_row_title {
     font-family: 'Secular One', sans-serif;
@@ -113,11 +118,6 @@
     width: 5em;
 }
 
-.delete_button:hover {
-    background-color: white;
-    color: var(--black);
-    border-color: var(--black);
-}
 
 .staff_picker {
     /* style of the staff picker*/
@@ -188,12 +188,22 @@
     background-color: #fff;
 }
 
+.sales_box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
+    padding: .5em;
+    flex-grow: 4;
+    background-color: var(--lighter-gray);
+    box-shadow :inset 2px 2px 2px #aaa;
+    border-radius: 10px;
+}
+
 @media (max-width:900px){
     .staff_row{
         flex-wrap: wrap;
     }
     .staff_row_title {
-        width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -206,6 +216,31 @@
     }
     .delete_button {
         font-size: 1em;
+    }
+    .time_section {
+        font-size: 1.511rem;
+    }
+    .date_title{
+        font-size: 1.5rem;
+    }
+    .staff_row_title .collapser {
+        order: -1;
+    }
+
+    .staff_row .staff_row_title {
+        order: -2;
+    }
+
+    .staff_row .delete_button {
+        order: -1;
+    }
+
+    .sales_box.collapsed_row_item{
+        width: 100%;
+    }
+
+    .staff_picker {
+        order: -3;
     }
 }
 
