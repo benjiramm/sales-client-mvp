@@ -48,5 +48,6 @@
     .row{   
         padding: .5em;
         gap:0;
+        margin: .75rem .5rem 0;
     }
 }

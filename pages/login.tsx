@@ -1,10 +1,11 @@
 import { UserContext } from "@/context/userContext";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import styles from "../styles/login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import button_styles from "../styles/buttons.module.css";
 
 const Login = () => {
   const router = useRouter();
@@ -82,7 +83,7 @@ const Login = () => {
 
         {!mutation.isLoading && (
           <button
-            className={styles.button}
+            className={`${button_styles.form_button} ${button_styles.add}`}
             onClick={() => handleSubmit()}
             disabled={mutation.isLoading}
           >

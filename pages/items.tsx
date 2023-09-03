@@ -4,7 +4,7 @@ import Spinner from "@/components/shared/Spinner";
 import { UserContext } from "@/context/userContext";
 import useGetItems from "@/hooks/useGetItems";
 import { Item } from "@/types/item";
-import { use, useContext } from "react";
+import { useContext } from "react";
 
 const Items = () => {
   const { data, isError, isLoading } = useGetItems();

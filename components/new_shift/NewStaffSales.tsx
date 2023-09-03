@@ -19,7 +19,6 @@ const NewStaffSales = (props: { staff: newStaffType }) => {
   const staff = useGetStaff();
 
   const [collapsed, setCollapsed] = useState(false);
-  const [deleteModal, setDeleteModal] = useState(false);
 
   if (items.isLoading || staff.isLoading) {
     return <Spinner />;
@@ -58,7 +57,7 @@ const NewStaffSales = (props: { staff: newStaffType }) => {
           className={
             !collapsed
               ? styles.add_sales_grid
-              : `${scoreboardStyles.sales_box} ${styles.collapsed_row_item}`
+              : `${styles.sales_box} ${styles.collapsed_row_item}`
           }
         >
           {items &&
@@ -76,18 +75,11 @@ const NewStaffSales = (props: { staff: newStaffType }) => {
           className={`${styles.delete_button} ${
             collapsed && styles.collapsed_row_item
           }`}
-          onClick={() => setDeleteModal(true)}
+          onClick={() => handleDelete()}
         >
-          <FontAwesomeIcon icon="trash-can" />
+          <FontAwesomeIcon icon="xmark" />
         </div>
       </div>
-      {deleteModal && (
-        <DeleteModal
-          target={`המכירות של ${staffName}`}
-          closeFunction={() => setDeleteModal(false)}
-          deleteFunction={() => handleDelete()}
-        />
-      )}
     </>
   );
 };

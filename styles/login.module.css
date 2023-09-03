@@ -27,31 +27,6 @@
     font-family: 'Secular One', sans-serif;
 }
 
-.button {
-    font-family: 'Heebo', sans-serif;
-    font-size: 1.75em;
-    margin: 15px;
-    padding: .3em .5em;
-    align-self: center;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: var(--black);
-    border-width: 1px;
-
-    /* fill in animation */
-    background: linear-gradient(to left, transparent 50%, var(--green) 50% )right;
-    background-size: 200%;
-    transition: .3s ease-out;
-
-    
-    filter: drop-shadow(2px 3px 2px #aaa);
-
-}
-
-.button:hover {
-    background-position: left;
-}
-
 .error_banner {
     background-color: var(--navbar-color);
     color: white;
