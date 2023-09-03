@@ -29,7 +29,7 @@ const NewUserForm = (props: { deleteFunction: Function }) => {
             className={button_styles.delete_button}
             onClick={() => props.deleteFunction()}
           >
-            <FontAwesomeIcon icon="trash-can" />
+            <FontAwesomeIcon icon="xmark" />
           </div>
         </div>
         <div className={styles.form_entries}>

@@ -63,7 +63,7 @@ const NewEmptyStaff = (props: { deleteFunction: Function }) => {
           className={`${styles.staff_row_item} ${styles.delete_button}`}
           onClick={() => props.deleteFunction()}
         >
-          <FontAwesomeIcon icon="trash-can" />
+          <FontAwesomeIcon icon="xmark" />
         </div>
       </div>
     </>

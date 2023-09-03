@@ -45,6 +45,15 @@ footer {
     background-color: var(--lighter-gray);
 }
 
+@media (max-width: 900px){
+    .main-container {
+        border-style: none;
+        margin: 0;
+    }
+    .title{
+        margin: 0;
+    }
+}
 
 
 

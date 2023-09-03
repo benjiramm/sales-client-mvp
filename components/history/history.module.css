@@ -84,6 +84,26 @@
     flex-grow: 1;
 }
 
+.delete_button {
+    color: #fff;
+    background-color: var(--navbar-color);
+    border-radius: .3rem;
+    padding: .3em;
+    font-size: 1.25em;
+    box-shadow: 2px 2px 2px #aaa;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    border-color: var(--navbar-color);
+    border-style: solid;
+    transition: .3s;
+}
+.delete_button:hover {
+    background-color: white;
+    color: var(--black);
+    border-color: var(--black);
+}
+
 @media (max-width:900px){
     .shift_container {
     margin: 1em .5em;
@@ -100,5 +120,9 @@
     }
     .staff_row {
         padding: 0;
+    }
+
+    .staff_row .delete_button {
+        display: none;
     }
 }

@@ -69,7 +69,7 @@
 }
 
 .input {
-    font-size: 1.25em;
+    font-size: 1em;
     font-family: 'Secular One', sans-serif;
     border-radius: 10px;
     border-style: solid;
@@ -78,7 +78,7 @@
 }
 
 .value_input {
-    width: 2em;
+    width: 5em;
 }
 
 /** NEW ITEM **/
@@ -154,5 +154,16 @@
     }
     .row_title{
         width: 5em;
+    }
+    .row_title .input{
+        width: 5em;
+        border-radius: 2px;
+    }
+    .value_input {
+        width: 1em;
+        border-radius: 2px;
+    }
+    .form_entry .input{
+        width: auto;
     }
 }
