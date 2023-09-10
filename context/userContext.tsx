@@ -9,6 +9,7 @@ export type User = {
   is_admin: boolean;
 };
 
+// need to stronger types
 export type UserContextType = {
   user: any;
   setUser: any;
