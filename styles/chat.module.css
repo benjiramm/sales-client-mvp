@@ -1,8 +1,132 @@
-.message_form {
+.form_home {
+    padding: .5em;
     position: fixed;
     bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.message_form {
+    font-size: 2rem;
+    display: flex;
+    gap: .5rem;
+    
+    justify-content: space-between;
+}
+
+.message_form input {
+    flex-grow: 4;
+    font-size: 1.5rem;
+    width: 5em;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--black);
+    border-radius: 15px;
+    font-family: 'Heebo', sans-serif;
+}
+
+.message_form button {
+    font-size: 1.5rem;
+    border-radius: 8px;
+    padding: .5rem;
+    border-style: none;
+
+    background-color: var(--navbar-color);
+    color: white
+
 }
 
 .messages_container{
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    padding-bottom: 50px;
+}
 
+.message_module {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 .5em;
+    border-radius: 15px;
+    width: auto;
+    max-width: 80%;
+    font-family: 'Heebo', sans-serif;
+    padding: .25em .5em;
+}
+
+.message.other {
+    background-color: var(--lighter-gray);
+    align-self: flex-end;
+}
+
+.message.self {
+    background-color: var(--navbar-color);
+    align-self: flex-start;
+    color: white
+}
+
+.message_author {
+    font-family: 'Secular One', sans-serif;
+}
+
+.message.self .message_author{
+    align-self: flex-start;
+}
+
+.message.other .message_author{
+    align-self: flex-end;
+}
+
+.message_content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5em;
+    align-items: flex-end;
+}
+
+.message.other .message_content{
+    flex-direction: row-reverse;
+}
+
+.message.self .message_content {
+    flex-direction: row;
+}
+
+.message_text {
+    text-align: start;
+}
+
+.message_timestamp {
+    font-size: .75rem;
+}
+
+.message.self .message_timestamp {
+    justify-self: flex-end;
+}
+
+.message.other .message_timestamp {
+    justify-self: flex-start;
+}
+
+.date_label {
+    font-family: 'Heebo', sans-serif;
+    color: var(--black);
+    margin: .2em 0;
+}
+
+.messages_container .message_module{
+    overflow-anchor: none;
+}
+
+.anchor {
+    height: 1px;
+    overflow-anchor: auto;
+    
 }
