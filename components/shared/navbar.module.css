@@ -1,13 +1,14 @@
 .navbar {
     display: flex;
     flex-wrap: wrap;
-    position: relative;
+    position: fixed;
+    width: 100%;
+    top: 0;
     justify-content: space-between;
     align-items: center;
     background-color: var(--navbar-color);
     color: var(--black);
-    padding: 0 1em;
-
+    z-index: 3;
 }
 
 .brand_title {
@@ -58,7 +59,7 @@
     display: flex;
     gap: .5rem;
     margin: 1rem 0;
-    padding: 0;
+    padding: 0 1em;
     font-family: 'Heebo', sans-serif;
 }
 
@@ -125,7 +126,7 @@
     }
 }
 
-@media (max-width: 900px){
+@media (max-width: 1000px){
     .navbar {
         flex-direction: column;
         align-items: flex-start;

@@ -60,6 +60,11 @@ const Navbar = () => {
             {user && (
               <>
                 <li>
+                  <Link href={"/protected/chat"}>
+                    <FontAwesomeIcon icon="comment-dots" /> צ׳אט
+                  </Link>
+                </li>
+                <li>
                   <Link href={"/protected/new_shift"}>
                     <FontAwesomeIcon icon="circle-plus" /> הכנס/י מכירות
                   </Link>

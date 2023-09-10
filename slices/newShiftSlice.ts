@@ -1,6 +1,5 @@
 import { Item } from "@/types/item";
 import { createSlice } from "@reduxjs/toolkit";
-import { type } from "os";
 
 export type newStaffSale = {
   item: string;
