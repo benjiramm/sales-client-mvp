@@ -20,7 +20,7 @@ const Chat = () => {
   const socketSlice = useAppSelector((store) => store.socketReducer);
   const dispatch = useAppDispatch();
   const mainSocket = socketSlice[ESocketClients.MAIN];
-  const { messages, loadedInitialMessages } = mainSocket;
+  const { messages, loadedInitialMessages, id } = mainSocket;
   const { user } = useContext(UserContext);
 
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
@@ -74,35 +74,36 @@ const Chat = () => {
         <h1 className="title">צ׳אט מנהלים</h1>
         <div className={styles.messages_container}>
           {/* organize messages with dates */}
-          {messages.map((message, index) => {
-            let withName = true;
-            let showDate = true;
-            // check if im the same day as the message before otherwise, im the first in that day
-            if (
-              index > 0 &&
-              sameDay(messages[index - 1].timestamp, message.timestamp)
-            ) {
-              showDate = false;
+          {id &&
+            messages.map((message, index) => {
+              let withName = true;
+              let showDate = true;
+              // check if im the same day as the message before otherwise, im the first in that day
+              if (
+                index > 0 &&
+                sameDay(messages[index - 1].timestamp, message.timestamp)
+              ) {
+                showDate = false;
 
-              if (messages[index - 1].author_id === message.author_id) {
-                withName = false;
+                if (messages[index - 1].author_id === message.author_id) {
+                  withName = false;
+                }
               }
-            }
-            // return element
-            return (
-              <div className={styles.message_module} key={message._id}>
-                {showDate && (
-                  <p className={styles.date_label}>
-                    {new Date(message.timestamp).toLocaleDateString(
-                      "he-IL",
-                      dayDisplayOptions
-                    )}
-                  </p>
-                )}
-                <Message withName={withName} messageData={message} />
-              </div>
-            );
-          })}
+              // return element
+              return (
+                <div className={styles.message_module} key={message._id}>
+                  {showDate && (
+                    <p className={styles.date_label}>
+                      {new Date(message.timestamp).toLocaleDateString(
+                        "he-IL",
+                        dayDisplayOptions
+                      )}
+                    </p>
+                  )}
+                  <Message withName={withName} messageData={message} />
+                </div>
+              );
+            })}
           <div ref={messagesEndRef} className={styles.anchor} />
         </div>
         <div className={styles.form_home}>
