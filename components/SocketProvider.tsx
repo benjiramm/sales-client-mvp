@@ -20,7 +20,7 @@ const SocketProvider: React.FC<Props> = ({ children }) => {
     dispatch({
       type: ESocketActions.CONNECT,
       payload: {
-        url: `${process.env.API}:80`,
+        url: `${process.env.API}`,
         clientName: ESocketClients.MAIN,
       },
     });
