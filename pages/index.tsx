@@ -1,10 +1,5 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import Scoreboard, {
-  TScoreboardLine,
-} from "@/components/scoreboard/Scoreboard";
+import Scoreboard from "@/components/scoreboard/Scoreboard";
 import { useContext, useState } from "react";
 import { UserContext } from "@/context/userContext";
 import dayjs from "dayjs";
@@ -15,7 +10,6 @@ import {
   useGetLeaderboardPrivate,
 } from "@/hooks/useGetLeaderboard";
 import Spinner from "@/components/shared/Spinner";
-import DeleteModal from "@/components/modal/DeleteModal";
 
 export default function Home() {
   const { user } = useContext(UserContext);
@@ -57,7 +51,11 @@ export default function Home() {
               />
             </>
           )}
-          {<Scoreboard scoreboard={leaderboard.data.data} />}
+          {leaderboard.data.data.length > 0 ? (
+            <Scoreboard scoreboard={leaderboard.data.data} />
+          ) : (
+            <p>אין מכירות לשבוע זה</p>
+          )}
         </div>
       </main>
     </>

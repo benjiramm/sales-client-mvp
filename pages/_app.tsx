@@ -7,7 +7,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { Provider } from "react-redux";
-import store from "@/store/store";
+import { store } from "@/store/store";
+import SocketProvider from "@/components/SocketProvider";
 
 const { library } = require("@fortawesome/fontawesome-svg-core");
 
@@ -20,12 +21,14 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <UserContextProvider>
-            <Navbar />
-            <Component {...pageProps} />
-          </UserContextProvider>
+          <SocketProvider>
+            <UserContextProvider>
+              <Navbar />
+              <Component {...pageProps} />
+            </UserContextProvider>
+          </SocketProvider>
         </Provider>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </QueryClientProvider>
     </>
   );
